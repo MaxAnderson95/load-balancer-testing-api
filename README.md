@@ -12,11 +12,11 @@ Or run via docker `docker run -it -p 80:80 maxanderson95/lb-testing-api:latest`
 
 You can specify configuration using environment variables.
 
-To specify the logging level: `APP_logging.level="DEBUG"`. The default is `INFO`.
+To specify the logging level: `API_logging.level="DEBUG"`. The default is `INFO`.
 
-To specify the instance id (essentially a friendly name for the instance): `APP_server.instance_id="HQ-01"`. The default is auto generated.
+To specify the instance id (essentially a friendly name for the instance): `API_server.instance_id="HQ-01"`. The default is auto generated.
 
-To specify the port the server runs on: `APP_server.port="8080"`. The default is 80.
+To specify the port the server runs on: `API_server.port="8080"`. The default is 80.
 
 ### Logging and Data
 
