@@ -12,7 +12,8 @@ app = FastAPI()
 
 @app.get("/{full_path:path}")
 async def catch_all(request: Request, full_path: str):
-    return gen_response(request)
+    health_check = "health" in request.url.path
+    return gen_response(request, health_check)
 
 
 @app.middleware("http")
