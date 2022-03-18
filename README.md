@@ -2,6 +2,12 @@
 
 A REST API written in Python using FastAPI that I use for testing load balancers in my day job.
 
+## Running
+
+To run from the command line, simply run `python app\main.py`
+
+Or run via docker `docker run -it -p 80:80 maxanderson95/lb-testing-api:latest`
+
 ## Configuration
 
 You can specify configuration using environment variables.
