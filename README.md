@@ -1,6 +1,6 @@
 # Load Balancer Testing API
 
-A REST API written in Python using FastAPI that I use for testing of load balancers
+A REST API written in Python using FastAPI that I use for testing load balancers in my day job.
 
 ## Configuration
 
