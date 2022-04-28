@@ -11,6 +11,7 @@ app = FastAPI()
 
 
 @app.get("/{full_path:path}")
+@app.head("/{full_path:path}")
 async def catch_all(request: Request, full_path: str):
     health_check = "health" in request.url.path
     return gen_response(request, health_check)
@@ -23,7 +24,8 @@ def log_requests(request: Request, call_next):
     else:
         middleware_log_level = logging.INFO
 
-    logger.log(middleware_log_level, f"METHOD: '{request.method}', PATH: '{request.url.path}' CLIENT: '{request.client.host}', XFF: '{get_xff(request)}'")
+    logger.log(middleware_log_level,
+               f"METHOD: '{request.method}', PATH: '{request.url.path}' CLIENT: '{request.client.host}', XFF: '{get_xff(request)}'")
     response = call_next(request)
     return response
 
