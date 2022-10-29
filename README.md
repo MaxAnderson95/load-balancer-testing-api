@@ -1,3 +1,5 @@
+[![ci](https://github.com/MaxAnderson95/load-balancer-testing-api/actions/workflows/main.yml/badge.svg)](https://github.com/MaxAnderson95/load-balancer-testing-api/actions/workflows/main.yml)
+
 # Load Balancer Testing API
 
 A basic REST API written in Python using FastAPI that I use for testing load balancers in my day job. It features a separate front-end UI and back-end API that can be run independently or in the same process.
