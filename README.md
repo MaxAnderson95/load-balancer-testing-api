@@ -4,9 +4,11 @@ A basic REST API written in Python using FastAPI that I use for testing load bal
 
 ## Running
 
-To run from the command line, simply run `python app\main.py`
+To run from the command line first install the dependencies: `pip install -r requirements.txt`, then run `python app\main.py`
 
-Or run via docker `docker run -it -p 80:80 maxanderson95/load-balancer-testing-api:latest`
+To run via docker `docker run -it -p 80:80 maxanderson95/load-balancer-testing-api:latest`
+
+To deploy on Kubernetes `kubectl apply -f ./manifests`. This requires a pre-configured ingress controller.
 
 ## Configuration
 
