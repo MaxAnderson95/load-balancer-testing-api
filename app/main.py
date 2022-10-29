@@ -44,7 +44,7 @@ def log_requests(request: Request, call_next):
         middleware_log_level = logging.INFO
 
     logger.log(middleware_log_level,
-            f"METHOD: '{request.method}', PATH: '{request.url.path}' CLIENT: '{request.client.host}', XFF: '{get_xff(request)}'")
+            f"INSTANCE: '{settings.server.instance_id}', METHOD: '{request.method}', PATH: '{request.url.path}' CLIENT: '{request.client.host}', XFF: '{get_xff(request)}'")
     response = call_next(request)
     return response
 
