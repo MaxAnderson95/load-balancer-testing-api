@@ -29,9 +29,17 @@ if settings.server.mode == "UI":
         else:
             return gen_response(request)
 
-if settings.server.mode == "API" or settings.server.mode == "FULL":
+if settings.server.mode == "API":
     @app.get("/{full_path:path}")
     @app.head("/{full_path:path}")
+    async def catch_all(request: Request, full_path: str):
+        return gen_response(request)
+
+if settings.server.mode == "FULL":
+    @app.get("/api/{full_path:path}")
+    @app.head("/api/{full_path:path}")
+    @app.get("/actuator/{full_path:path}")
+    @app.head("/actuator/{full_path:path}")
     async def catch_all(request: Request, full_path: str):
         return gen_response(request)
 

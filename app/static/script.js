@@ -7,7 +7,7 @@ async function getAPIInstanceID() {
 }
 
 async function getJoke() {
-    let response = await fetch('/joke')
+    let response = await fetch('/api/joke')
     let json = await response.json()
     return json
 }
