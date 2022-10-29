@@ -30,4 +30,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: maxanderson95/load-balancing-testing-api:latest, maxanderson95/load-balancing-testing-api:v${{github.run_number}}
+          tags: maxanderson95/load-balancer-testing-api:latest, maxanderson95/load-balancer-testing-api:v${{github.run_number}}
