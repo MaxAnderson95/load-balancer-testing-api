@@ -1,6 +1,6 @@
 # Load Balancer Testing API
 
-A basic REST API written in Python using FastAPI that I use for testing load balancers in my day job.
+A basic REST API written in Python using FastAPI that I use for testing load balancers in my day job. It features a separate front-end UI and back-end API that can be run independently or in the same process.
 
 ## Running
 
@@ -18,7 +18,7 @@ You can specify configuration using environment variables.
 
 * To specify the port the server runs on: `API_server.port="8080"`. The default is 80.
 
-* To specify the server "mode": `API_server.mode="API"`. The default is `API`, and the other options are `UI` and `FULL`.
+* To specify the server "mode": `API_server.mode="FULL"`. The default is `FULL`, and the other options are `UI` and `API`.
 
 ## Logging and Data
 
@@ -47,7 +47,7 @@ response object will contain a new key value pair of `"status": "UP`, mimicking 
 Spring Boot framework.
 
 ## Server Modes
-Three server modes are available. These are: `API`, `UI`, and `FULL`. They are set using an environment variable with the default being `API` if the environment variable is not set.
+Three server modes are available. These are: `API`, `UI`, and `FULL`. They are set using an environment variable with the default being `FULL` if the environment variable is not set.
 
 * When the server is in `API` mode, it simply responds to `GET` and `HEAD` requests at *any* route and returns a sample response.
 

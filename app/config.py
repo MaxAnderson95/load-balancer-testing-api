@@ -13,7 +13,7 @@ settings = Dynaconf(
     settings_files=['settings.toml'],
     validators=[
         Validator("logging.level", default=logging.INFO),
-        Validator("server.mode", default="API", is_in=["API","UI","FULL"]),
+        Validator("server.mode", default="FULL", is_in=["API","UI","FULL"]),
         Validator("server.port", default=80),
         Validator("server.instance_id", default=gen_id())
     ]
