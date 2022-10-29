@@ -51,7 +51,7 @@ Three server modes are available. These are: `API`, `UI`, and `FULL`. They are s
 
 * When the server is in `API` mode, it simply responds to `GET` and `HEAD` requests at *any* route and returns a sample response.
 
-* When the server is in `UI` mode, it serves a static HTML page and Javascript file. On load, the webpage will attempt to make a call to `/api` and return the `server_instance_id` as text in the HTML body. It will also attempt to get a joke from `/joke` which itself gets a joke from a 3rd party joke API.
+* When the server is in `UI` mode, it serves a static HTML page and Javascript file. On load, the webpage will attempt to make a call to `/api` and return the `server_instance_id` as text in the HTML body. It will also attempt to get a joke from `/api/joke` which itself gets a joke from a 3rd party joke API.
 
   Also note, calls with the word `health` anywhere in the path will return a JSON response with a key value pair of `"status": "UP"`, mimicking the response of the health monitor in Spring Boot framework.
 
