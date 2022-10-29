@@ -40,7 +40,7 @@ When a request is made to *any* route, it will respond with a json object in the
 ```
 Also, an `INFO` level log message will be printed to STDOUT with similar information:
 
-`[2022-03-18 18:01:15,979][main      ][INFO   ] METHOD: 'GET', PATH: '/testroute' CLIENT: '10.1.1.50', XFF: '172.12.12.12'`
+`[2022-03-18 18:01:15,979][main      ][INFO   ] Instance: 'D2SRCA', METHOD: 'GET', PATH: '/testroute' CLIENT: '10.1.1.50', XFF: '172.12.12.12'`
 
 If the word "health" is found anywhere in the request path, the log message will be at `DEBUG` level instead, and the
 response object will contain a new key value pair of `"status": "UP`, mimicking the response of the health monitor in
