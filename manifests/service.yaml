@@ -1,0 +1,22 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: example-ui-service
+spec:
+  selector:
+    app: example
+    type: ui 
+  ports:
+  - port: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: example-api-service
+spec:
+  selector:
+    app: example
+    type: api
+  ports:
+  - port: 80

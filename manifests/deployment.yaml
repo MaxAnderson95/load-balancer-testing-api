@@ -1,0 +1,67 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-ui-deployment
+  labels:
+    app: example
+    type: ui
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: example
+      type: ui
+  template:
+    metadata:
+      labels:
+        app: example
+        type: ui
+    spec:
+      containers:
+      - name: example-ui
+        image: maxanderson95/load-balancer-testing-api:latest
+        imagePullPolicy: Always
+        env:
+          - name: "API_server.instance_id"
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: "API_server.mode"
+            value: "UI"
+        readinessProbe:
+          httpGet:
+            path: /ui/actuator/health
+            port: 80
+          periodSeconds: 5
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-api-deployment
+  labels:
+    app: example
+    type: api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: example
+      type: api
+  template:
+    metadata:
+      labels:
+        app: example
+        type: api
+    spec:
+      containers:
+      - name: example-api
+        image: maxanderson95/load-balancer-testing-api:latest
+        imagePullPolicy: Always
+        env:
+          - name: "API_server.instance_id"
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: "API_server.mode"
+            value: "API"
