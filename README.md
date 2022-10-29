@@ -26,16 +26,16 @@ When a request is made to *any* route, it will respond with a json object in the
 
 ```json
 {
-  server_details: {
-    server_instance_id: "D2SRCA",
-    server_mode: "API",
-    server_listening_port: 80
-  },
-  request_details: {
-    client_ip: "10.1.1.50",
-    x-forwarded-for_header: "172.12.12.12",
-    request_path: "/api/v1"
-  }
+	"server_details": {
+		"server_instance_id": "D2SRCA",
+		"server_mode": "API",
+		"server_listening_port": 80
+	},
+	"request_details": {
+		"client_ip": "10.1.1.50",
+		"x-forwarded-for_header": "172.12.12.12",
+		"request_path": "/api/v1"
+	}
 }
 ```
 Also, an `INFO` level log message will be printed to STDOUT with similar information:
