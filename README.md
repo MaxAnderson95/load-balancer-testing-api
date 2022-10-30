@@ -10,7 +10,12 @@ To run from the command line first install the dependencies: `pip install -r req
 
 To run via docker `docker run -it -p 80:80 maxanderson95/load-balancer-testing-api:latest`
 
-To deploy on Kubernetes `kubectl apply -f ./manifests`. This requires a pre-configured ingress controller.
+You can also deploy the included manifests. This requires a pre-configured ingress controller.
+```
+kubectl apply -f https://raw.githubusercontent.com/MaxAnderson95/load-balancer-testing-api/main/manifests/deployment.yaml
+kubectl apply -f https://raw.githubusercontent.com/MaxAnderson95/load-balancer-testing-api/main/manifests/service.yaml
+kubectl apply -f https://raw.githubusercontent.com/MaxAnderson95/load-balancer-testing-api/main/manifests/ingress.yaml
+```
 
 ## Configuration
 
