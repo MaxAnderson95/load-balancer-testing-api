@@ -20,8 +20,8 @@ if settings.server.mode == "UI" or settings.server.mode == "FULL":
         return HTMLResponse(pkg_resources.resource_string(__name__, 'static/index.html'))
 
 if settings.server.mode == "UI":
-    @app.get("/{full_path:path}")
-    @app.head("/{full_path:path}")
+    @app.get("/ui/{full_path:path}")
+    @app.head("/ui/{full_path:path}")
     async def ui_health_monitor(request: Request, full_path: str):
         health_check = "health" in request.url.path
         if not health_check:
