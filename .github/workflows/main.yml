@@ -29,6 +29,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          platform: "linux/amd64,linux/arm64"
+          platforms: "linux/amd64,linux/arm64"
           push: true
           tags: maxanderson95/load-balancer-testing-api:latest, maxanderson95/load-balancer-testing-api:v${{github.run_number}}
