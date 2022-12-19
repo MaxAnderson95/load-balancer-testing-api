@@ -3,7 +3,7 @@ import logging
 import pkg_resources
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, Response
 from config import settings
 from logger import configure_logging
 from util import gen_response, get_xff
@@ -12,8 +12,15 @@ logger = configure_logging(__name__)
 
 app = FastAPI()
 
+
+@app.head("/", include_in_schema=False)
+def root_head():
+    return Response(status_code=200)
+
+
 if settings.server.mode == "UI" or settings.server.mode == "FULL":
-    app.mount("/static", StaticFiles(directory=pkg_resources.resource_filename(__name__, 'static')), name="static")
+    app.mount("/static", StaticFiles(
+        directory=pkg_resources.resource_filename(__name__, 'static')), name="static")
 
     @app.get("/", include_in_schema=False)
     def root():
@@ -52,12 +59,14 @@ def log_requests(request: Request, call_next):
         middleware_log_level = logging.INFO
 
     logger.log(middleware_log_level,
-            f"INSTANCE: '{settings.server.instance_id}', METHOD: '{request.method}', PATH: '{request.url.path}' CLIENT: '{request.client.host}', XFF: '{get_xff(request)}'")
+               f"INSTANCE: '{settings.server.instance_id}', METHOD: '{request.method}', PATH: '{request.url.path}' CLIENT: '{request.client.host}', XFF: '{get_xff(request)}'")
     response = call_next(request)
     return response
 
 
 if __name__ == "__main__":
-    logger.info(f"Launching server instance '{settings.server.instance_id}' on port '{settings.server.port}' in '{settings.server.mode}' mode.")
+    logger.info(
+        f"Launching server instance '{settings.server.instance_id}' on port '{settings.server.port}' in '{settings.server.mode}' mode.")
     logger.debug("DEBUG logging is enabled")
-    uvicorn.run("main:app", host="0.0.0.0", port=int(settings.server.port), proxy_headers=False, log_level="critical")
+    uvicorn.run("main:app", host="0.0.0.0", port=int(
+        settings.server.port), proxy_headers=False, log_level="critical")
